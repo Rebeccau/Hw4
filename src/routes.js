@@ -18,7 +18,24 @@
 
     .state( 'categories', {
       url: '/categories',
-      templateUrl: 'src/data/templates/home.template.html'
+      templateUrl: 'src/data/templates/categories.template.html',
+      controller: 'categoriesController as categories',
+      resolve: {
+        items: [ 'menudata', function(menudata){
+          return menudata.getAllCategories();
+        }]
+      }
+    })
+
+    .state( 'items', {
+      url: '/items',
+      templateUrl: 'src/data/templates/categories.template.html',
+      controller: 'categoriesController as categories',
+      resolve: {
+        items: [ 'menudata', function(menudata){
+          return menudata.getAllCategories();
+        }]
+      }
     });
 
   }

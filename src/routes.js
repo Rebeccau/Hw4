@@ -28,12 +28,16 @@
     })
 
     .state( 'items', {
-      url: '/items',
-      templateUrl: 'src/data/templates/categories.template.html',
-      controller: 'categoriesController as categories',
+      url: '/items/{cat}',
+      templateUrl: 'src/data/templates/items.template.html',
+      controller: 'itemsController as list',
+      // params: {
+      //   cat: null
+      // }
       resolve: {
-        items: [ 'menudata', function(menudata){
-          return menudata.getAllCategories();
+        items: [ '$stateParams', 'menudata',
+        function($stateParams, menudata){
+          return menudata.getItemsForCategory($stateParams.cat);
         }]
       }
     });

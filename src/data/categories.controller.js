@@ -8,7 +8,6 @@
   function categoriesController(menudata, items){
     var categories = this;
     categories.items = items;
-    console.log(categories.items);
   }
 
 })();
